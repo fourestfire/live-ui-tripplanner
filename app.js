@@ -9,7 +9,6 @@ const router = require('./routes');
 
 const models = require('./models');
 const Place = models.Place;
-console.log(models)
 const Hotel = models.Hotel;
 const Activity = models.Activity;
 const Restaurant = models.Restaurant;
@@ -23,6 +22,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use(express.static(__dirname + '/public'));
+
+app.use(express.static(__dirname + '/node_modules/bootstrap/dist'));
+app.use(express.static(__dirname + '/node_modules/jquery/dist'));
 
 app.use('/', router);
 //
@@ -47,22 +49,19 @@ Place.sync()
 
 module.exports = app;
 
+// catch 404 (i.e., no route was hit) and forward to error handler
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
 
 // handle all errors (anything passed into `next()`)
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   console.error(err);
-  console.log("hi2")
   res.send("404 page goes here");
   // res.render(
   //   // ... fill in this part
   // );
-});
-
-// catch 404 (i.e., no route was hit) and forward to error handler
-app.use(function(req, res, next) {
-  console.log("hi1")
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
 });
