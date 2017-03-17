@@ -1,43 +1,79 @@
-'use strict';
+var Sequelize = require('sequelize');
+var db = new Sequelize('postgres://localhost:5432/tripplanner');
+// var marked = require('marked');
 
-const express = require('express');
-const router = express.Router();
-const bodyParser = require("body-parser");
-router.use(bodyParser.urlencoded({ extended: false }));
-router.use(bodyParser.json());
-
-router.get('/users', function(req, res){
-  res.send(tasks.listPeople());
+var Place = db.define('place', {
+    address: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    city: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    state: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    phone: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    location: {
+        type: Sequelize.ARRAY(Sequelize.FLOAT),
+        allowNull: false
+    }
 });
 
-router.get('/users/:name/tasks', function(req, res){
-  var taskList = tasks.list(req.params.name);
-  if (req.query.status) {
-    taskList = taskList.filter(function(val){  // filter out values according to our test type
-      return req.query.status === "complete" ? val.complete === true : val.complete === false;
-    });
-  };
-  res.send(taskList);
+var Hotel = db.define('hotel', {
+    name: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    num_stars: {
+        type: Sequelize.FLOAT(1,5),
+        allowNull: false
+    },
+    amenities: {
+        type: Sequelize.STRING,
+        allowNull: false
+    }
 });
 
-router.post('/users/:name/tasks', function(req, res){
-  var task = tasks.add(req.params.name, req.body);
-  if (task.hasOwnProperty('content') && task.hasOwnProperty('complete') && Object.keys(task).length === 2) {
-    res.status(201).send(task);
-  } else {
-    res.status(400).send(task);
-  }
-})
-
-router.put('/users/:name/tasks/:index', function(req, res){
-  tasks.complete(req.params.name, req.params.index);
-  res.send();
+var Activity = db.define('activity', {
+    name: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    age_range: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
 });
 
-router.delete('/users/:name/tasks/:index', function(req, res){
-  tasks.remove(req.params.name, req.params.index);
-  res.status(204);
-  res.send();
+var Restaurant = db.define('restaurant', {
+    name: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    cuisine: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    price: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    }
 });
 
-module.exports = router;
+Hotel.belongsTo(Place);
+Activity.belongsTo(Place);
+Restaurant.belongsTo(Place);
+
+module.exports = {
+    Place: Place,
+    Hotel: Hotel,
+    Activity: Activity,
+    Restaurant: Restaurant,
+    db: db,
+};
