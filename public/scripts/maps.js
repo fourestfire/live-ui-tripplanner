@@ -3,6 +3,9 @@ function initialize_gmaps() {
     var myLatlng = new google.maps.LatLng(40.705189,-74.009209);
     // set the map options hash
     var mapOptions = {
+        zoomControl: false,
+        streetViewControl: false,
+        mapTypeControl: false,
         center: myLatlng,
         zoom: 16,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
