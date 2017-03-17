@@ -17,10 +17,10 @@ app.use(bodyParser.json());
 
 app.use(express.static(__dirname + '/public'));
 
-app.get("/", function(req, res) {
-  res.send("hello folks!");
-})
-// app.use('/', router);
+// app.get("/", function(req, res) {
+//   res.send("hello folks!");
+// })
+app.use('/', router);
 
 app.listen(3000, function(){
   console.log("i'm listening baby (on 3000)")
