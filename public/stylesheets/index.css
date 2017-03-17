@@ -1,0 +1,9 @@
+.main {
+  padding-top: 50px; }
+
+.navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-brand {
+  color: white; }
+
+#map-canvas {
+  height: 80vh;
+  width: 100%; }

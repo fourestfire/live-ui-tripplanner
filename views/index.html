@@ -4,24 +4,40 @@
 {% block title %}Your Trip{% endblock %}
 
 {% block content %}
-<select name="select">
-  <option selected disabled>Select Hotel</option>
-  {% for hotel in templateHotels %}
-  <option value="{{ hotel.name }}">{{ hotel.name }}</option>
-  {% endfor %}
-</select>
-<select name="select">
-  <option selected disabled>Select Restaurant</option>
-  {% for restaurant in templateRestaurants %}
-  <option value="{{ restaurant.name }}">{{ restaurant.name }}</option>
-  {% endfor %}
-</select>
-<select name="select">
-  <option selected disabled>Select Activity</option>
-  {% for activity in templateActivities %}
-  <option value="{{ activity.name }}">{{ activity.name }}</option>
-  {% endfor %}
-</select>
+<div class="section main">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9 ">
+          <div id="map-canvas"></div>
+      </div>
+      <div class="col-lg-3 ">
+        <div class="row">
+          <select name="select">
+            <option selected disabled>Select Hotel</option>
+            {% for hotel in templateHotels %}
+            <option value="{{ hotel.name }}">{{ hotel.name }}</option>
+            {% endfor %}
+          </select>
+          <select name="select">
+            <option selected disabled>Select Restaurant</option>
+            {% for restaurant in templateRestaurants %}
+            <option value="{{ restaurant.name }}">{{ restaurant.name }}</option>
+            {% endfor %}
+          </select>
+          <select name="select">
+            <option selected disabled>Select Activity</option>
+            {% for activity in templateActivities %}
+            <option value="{{ activity.name }}">{{ activity.name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="row">
+          <p>My Hotel</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
 {% endblock %}
 
 
