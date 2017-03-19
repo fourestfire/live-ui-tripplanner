@@ -6,6 +6,7 @@ function initialize_gmaps() {
         zoomControl: false,
         streetViewControl: false,
         mapTypeControl: false,
+        scrollwheel: false,
         center: myLatlng,
         zoom: 16,
         mapTypeId: google.maps.MapTypeId.ROADMAP,

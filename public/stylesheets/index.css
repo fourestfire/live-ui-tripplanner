@@ -24,9 +24,9 @@ body {
   width: 0px;
   height: 100%;
   margin-top: 50px;
-  background-color: black;
+  background-color: #08304B;
   overflow-y: auto;
-  background: #000;
+  background: #08304B;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
@@ -83,21 +83,18 @@ body {
   background: none; }
 
 html {
-  background-color: black; }
+  background-color: #08304B; }
 
 .main {
   padding-top: 50px; }
 
 .navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-brand {
-  color: white; }
+  color: #f5f5f5; }
 
 #map-canvas {
   height: 94vh;
   width: 100%;
   margin-top: 1px; }
-
-.bg {
-  background-color: #ccc; }
 
 .panel-body h5:first-child {
   margin-top: 0px; }
@@ -105,18 +102,22 @@ html {
 .panel-body p {
   font-size: 12px; }
 
+.panel {
+  border-radius: 2px;
+  background-color: #f5f5f5; }
+
 select {
   width: 280px;
   font-size: 12px; }
+
+.form-control {
+  margin-bottom: 20px; }
 
 .col-lg-9, .col-lg-12, .col-md-9, .col-lg-9, .col-xs-9 {
   position: relative;
   min-height: 1px;
   padding-right: 0px;
   padding-left: 0px; }
-
-.bgcolor {
-  background-color: #ccc; }
 
 .navbar-brand {
   padding: 15px 15px;
@@ -125,11 +126,13 @@ select {
 .navbar-nav {
   padding-right: 15px;
   font-size: 18px;
-  font-family: 'Lobster', cursive; }
+  font-family: 'Lobster', cursive;
+  color: #f5f5f5; }
 
 .navbar-brand {
   font-family: 'Lobster', cursive;
-  font-size: 20px; }
+  font-size: 20px;
+  color: #f5f5f5; }
 
 .btn-circle {
   width: 30px;
@@ -139,8 +142,25 @@ select {
   font-size: 12px;
   border-radius: 50%; }
 
+.glyphicon-menu-hamburger:hover {
+  color: #0E4F64; }
+
+.btn-success {
+  background-color: #F75850;
+  border-color: #0E4F64; }
+
+.btn-primary {
+  background-color: #0E4F64; }
+
+.btn-info {
+  background-color: #F37D19;
+  border-color: #0E4F64; }
+
+.glyphicon-remove-circle:hover {
+  color: #F75850; }
+
 #blackbox {
   height: 30px;
   width: 350px;
   margin-top: -10px;
-  background-color: black; }
+  background-color: #08304B; }
