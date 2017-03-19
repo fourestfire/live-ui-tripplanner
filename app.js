@@ -27,9 +27,6 @@ app.use(express.static(__dirname + '/node_modules/bootstrap/dist'));
 app.use(express.static(__dirname + '/node_modules/jquery/dist'));
 
 app.use('/', router);
-//
-// app.listen(3000, function () {
-//   console.log("i'm listening baby (on 3000)")})
 
 Place.sync()
     .then(function () {
@@ -60,7 +57,7 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   console.error(err);
-  res.send("404 page goes here");
+  res.send("404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR ");
   // res.render(
   //   // ... fill in this part
   // );

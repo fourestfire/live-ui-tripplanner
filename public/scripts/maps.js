@@ -9,6 +9,7 @@ function initialize_gmaps() {
         center: myLatlng,
         zoom: 16,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
+        //styles thanks to Adam Krogh.
         styles: [
             {
                 "featureType": "all",

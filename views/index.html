@@ -4,125 +4,116 @@
 {% block title %}Your Trip{% endblock %}
 
 {% block content %}
+
+<div id="wrapper">
+  <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+          <div class="col-lg-12 ">
+          <div class="container-fluid">
+              <div class="row" id="blackbox"> &nbsp;</div>
+              <div class="row">
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    <h5>Hotel</h5>
+                    <select name="select">
+                      <option selected disabled>Select Hotel</option>
+                      {% for hotel in templateHotels %}
+                      <option value="{{ hotel.name }}">{{ hotel.name }}</option>
+                      {% endfor %}
+                    </select>
+                    <h5>Restaurant</h5>
+                    <select name="select">
+                      <option selected disabled>Select Restaurant</option>
+                      {% for restaurant in templateRestaurants %}
+                      <option value="{{ restaurant.name }}">{{ restaurant.name }}</option>
+                      {% endfor %}
+                    </select>
+                    <h5>Activity</h5>
+                    <select name="select">
+                      <option selected disabled>Select Activity</option>
+                      {% for activity in templateActivities %}
+                      <option value="{{ activity.name }}">{{ activity.name }}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4>Day:  &nbsp;
+                      <button type="button" class="btn btn-success btn-circle">1</button>
+                      <button type="button" class="btn btn-primary btn-circle">2</button>
+                      <button type="button" class="btn btn-primary btn-circle">3</button>
+                      <button type="button" class="btn btn-primary btn-circle">4</button>
+                      <button type="button" class="btn btn-info btn-circle">+</button>
+                    </h4>
+                  </div>
+
+                  <div class="panel-body">
+                    <h5>My Hotel</h5>
+                    <div class="row">
+                      <div class="col-lg-10 ">
+                          <p>Trump Tower (don't hate me)</p>
+                      </div>
+                      <div class="col-lg-2 ">
+                          <span class="glyphicon glyphicon-remove-circle"></span>
+                      </div>
+                    </div>
+                    <h5>My Restaurants</h5>
+                    <div class="row">
+                      <div class="col-lg-10 ">
+                          <p>Terrible Restaurant </p>
+                      </div>
+                      <div class="col-lg-2 ">
+                          <span class="glyphicon glyphicon-remove-circle"></span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-10 ">
+                          <p>My Nasty Kitchen</p>
+                      </div>
+                      <div class="col-lg-2 ">
+                          <span class="glyphicon glyphicon-remove-circle"></span>
+                      </div>
+                    </div>
+                    <h5>My Activities</h5>
+                    <div class="row">
+                      <div class="col-lg-10 ">
+                          <p>Sleeping</p>
+                      </div>
+                      <div class="col-lg-2 ">
+                          <span class="glyphicon glyphicon-remove-circle"></span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-10 ">
+                          <p>Drinking large amounts of whiskey</p>
+                      </div>
+                      <div class="col-lg-2 ">
+                          <span class="glyphicon glyphicon-remove-circle"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ul>
+    </div>
+  <!-- Main Page -->
+<div id="page-content-wrapper">
 <div class="section main">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-lg-9 ">
+      <div class="col-lg-12 ">
           <div id="map-canvas"></div>
       </div>
-      <div>
-      <div class="col-lg-3">
-        <div class="row">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              <h4>Hotel</h4>
-              <select name="select">
-                <option selected disabled>Select Hotel</option>
-                {% for hotel in templateHotels %}
-                <option value="{{ hotel.name }}">{{ hotel.name }}</option>
-                {% endfor %}
-              </select>
-              <h4>Restaurant</h4>
-              <select name="select">
-                <option selected disabled>Select Restaurant</option>
-                {% for restaurant in templateRestaurants %}
-                <option value="{{ restaurant.name }}">{{ restaurant.name }}</option>
-                {% endfor %}
-              </select>
-              <h4>Activity</h4>
-              <select name="select">
-                <option selected disabled>Select Activity</option>
-                {% for activity in templateActivities %}
-                <option value="{{ activity.name }}">{{ activity.name }}</option>
-                {% endfor %}
-              </select>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="panel panel-default">
-            <div class="panel-heading">My Hotel</div>
-            <div class="panel-body">
-              <h4>My Hotel</h4>
-              <div class="row">
-                <div class="col-lg-10 ">
-                    <p>Trump Tower (don't hate me)</p>
-                </div>
-                <div class="col-lg-2 ">
-                    <span class="glyphicon glyphicon-remove-circle"></span>
-                </div>
-              </div>
-              <h4>My Restaurants</h4>
-              <div class="row">
-                <div class="col-lg-10 ">
-                    <p>Found Gum on The Floor Place</p>
-                </div>
-                <div class="col-lg-2 ">
-                    <span class="glyphicon glyphicon-remove-circle"></span>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-lg-10 ">
-                    <p>My Nasty Kitchen</p>
-                </div>
-                <div class="col-lg-2 ">
-                    <span class="glyphicon glyphicon-remove-circle"></span>
-                </div>
-              </div>
-              <h4>My Activties</h4>
-              <div class="row">
-                <div class="col-lg-10 ">
-                    <p>Sleeping</p>
-                </div>
-                <div class="col-lg-2 ">
-                    <span class="glyphicon glyphicon-remove-circle"></span>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-lg-10 ">
-                    <p>Drinking large amounts of whiskey</p>
-                </div>
-                <div class="col-lg-2 ">
-                    <span class="glyphicon glyphicon-remove-circle"></span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+
     </div>
   </div>
-
+  </div>
+    </div>
+      </div>
 {% endblock %}
-
-
-
-
-<!-- <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <select name="select">
-      <option selected disabled>Select Hotel</option>
-      {% for hotel in templateHotels %}
-      <option value="{{ hotel.name }}">{{ hotel.name }}</option>
-      {% endfor %}
-    </select>
-    <select name="select">
-      <option selected disabled>Select Restaurant</option>
-      {% for restaurant in templateRestaurants %}
-      <option value="{{ restaurant.name }}">{{ restaurant.name }}</option>
-      {% endfor %}
-    </select>
-    <select name="select">
-      <option selected disabled>Select Activity</option>
-      {% for activity in templateActivities %}
-      <option value="{{ activity.name }}">{{ activity.name }}</option>
-      {% endfor %}
-    </select>
-  </body>
-</html> -->

@@ -4,20 +4,24 @@
   <head>
     <link href="/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/stylesheets/index.css" rel="stylesheet" />
+    <!-- <link href="/stylesheets/sidebar.css" rel="stylesheet" /> -->
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Raleway" rel="stylesheet">
   </head>
   <body>
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-map-marker"></span> TripPlanner</a>
+          <a class="navbar-brand" id="menu-toggle" href="#menu-toggle"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+          <!-- <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-map-marker"></span></a> -->
+          <a class="navbar-brand" href="/">TripPlanner</a>
+          <a class="navbar-brand" href="/">|</a>
+          <a class="navbar-brand" href="/">Home</a>
+          <a class="navbar-brand" href="/contact">Contact</a>
+
+          <!-- <a class="navbar-brand" id="menu-toggle" href="#menu-toggle">Toggle Menu</a> -->
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="/contact">Contact</a></li>
-          </ul>
-        </div><!-- /.navbar-collapse -->
       </div><!-- /.container -->
     </nav>
 
@@ -42,5 +46,12 @@
     <script src="/jquery.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfUjVXCIRLaNKI3fwaC6wreB_VfgpHLx0&sensor=true"></script>
     <script src="/scripts/maps.js"></script>
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    $("#wrapper").toggleClass("toggled")
+    </script>
 
   </body>

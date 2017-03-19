@@ -1,3 +1,10 @@
+@import "sidebar.scss";
+
+html {
+  background-color: black;
+}
+
+
 .main {
     padding-top: 50px;
 }
@@ -17,17 +24,68 @@
   background-color: #ccc;
 }
 
-select{
-  width: 250px;
+.panel-body {
+  h5:first-child  {
+    margin-top: 0px;
+  }
+  p {
+    font-size: 12px;
+  }
 }
 
-.col-lg-9, .col-md-9, .col-lg-9, .col-xs-9{
+select {
+  width: 280px;
+  font-size: 12px;
+}
+
+
+.col-lg-9, .col-lg-12, .col-md-9, .col-lg-9, .col-xs-9{
     position: relative;
     min-height: 1px;
     padding-right: 0px;
     padding-left: 0px;
 }
 
+// @media screen and (min-width: 705px) {
+//   .navbar-brand {
+//     margin-left: 1000px;
+//     padding: 15px 15px;
+//   }
+// }
+
 .bgcolor {
   background-color: #ccc;
+}
+
+.navbar-brand {
+  padding: 15px 15px;
+  margin-left: 0px
+}
+
+.navbar-nav {
+  padding-right: 15px;
+  font-size: 18px;
+  font-family: 'Lobster', cursive;
+}
+
+.navbar-brand {
+  font-family: 'Lobster', cursive;
+  font-size: 20px;
+}
+
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 2px 0;
+  font-size: 12px;
+  border-radius: 50%;
+}
+
+#blackbox {
+  // float: left;
+  height: 30px;
+  width: 350px;
+  margin-top: -10px;
+  background-color: black;
 }
