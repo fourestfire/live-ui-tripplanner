@@ -58,7 +58,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   console.error(err);
   res.send("404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR ");
-  // res.render(
-  //   // ... fill in this part
-  // );
+  res.render(
+    // ... fill in this part
+  );
 });

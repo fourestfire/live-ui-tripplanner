@@ -1,7 +1,6 @@
 {
   "name": "static-ui-tripplanner",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -35,5 +34,6 @@
   },
   "devDependencies": {
     "node-sass": "^4.5.0"
-  }
+  },
+  "description": ""
 }

@@ -31,13 +31,21 @@ var Hotel = db.define('hotel', {
         allowNull: false
     },
     num_stars: {
-        type: Sequelize.FLOAT(1,5),
-        allowNull: false
+        type: Sequelize.FLOAT,
+        allowNull: false,
+        validate: {
+          min: 1,
+          max: 5
+        }
     },
     amenities: {
         type: Sequelize.STRING,
         allowNull: false
-    }
+    },
+}, {
+    defaultScope: {
+      include: [Place]
+    },
 });
 
 var Activity = db.define('activity', {
@@ -48,6 +56,17 @@ var Activity = db.define('activity', {
     age_range: {
         type: Sequelize.STRING,
         allowNull: false
+    },
+
+
+}, {
+    getterMethods: {
+      type: function() {
+        return 'activity';
+      }
+    },
+    defaultScope: {
+      include: [Place]
     },
 });
 
@@ -63,7 +82,11 @@ var Restaurant = db.define('restaurant', {
     price: {
         type: Sequelize.INTEGER,
         allowNull: false
-    }
+    },
+}, {
+    defaultScope: {
+      include: [Place]
+    },
 });
 
 Hotel.belongsTo(Place);
