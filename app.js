@@ -46,19 +46,18 @@ Place.sync()
 
 module.exports = app;
 
-// catch 404 (i.e., no route was hit) and forward to error handler
-app.use(function(req, res, next) {
+// failed to catch req above means 404, forward to error handler
+app.use(function (req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
-// handle all errors (anything passed into `next()`)
-app.use(function(err, req, res, next) {
+// handle any errors
+app.use(function (err, req, res, next) {
+  console.error(err, err.stack);
   res.status(err.status || 500);
-  console.error(err);
-  res.send("404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR 404 ERROR ");
-  res.render(
-    // ... fill in this part
-  );
+  res.render('error', {
+    error: err
+  });
 });
