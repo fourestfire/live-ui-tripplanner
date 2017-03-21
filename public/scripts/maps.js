@@ -57,7 +57,7 @@ $(function initializeMap (){
     marker.coords = coords;
     marker.type = type;
     markers.push(marker)
-    console.log('markers is:', markers, 'marker.coords is', marker.coords)
+    // console.log('markers is:', markers, 'marker.coords is', marker.coords)
   }
 
   var markers = [];
@@ -84,7 +84,7 @@ $(function initializeMap (){
   })
 
   var itineraryHTML1 = "<div class='col-lg-10 col-md-10 col-ms-10 col-xs-10'>"
-  var itineraryHTML2 = "</div><div class='col-lg-2 col-md-2 col-sm-2 col-xs-2'><span class='glyphicon glyphicon-remove-circle'></span></div>"
+  var itineraryHTML2 = "</div><div class='col-lg-2 col-md-2 col-sm-2 col-xs-2 parent-remove'><button class='btn btn-xs btn-danger remove btn-circle'>x</button></div>"
 
   $("select").next().on('click', function() {
     var type = $(this).prev().attr('name');
@@ -119,6 +119,37 @@ $(function initializeMap (){
       drawMarker('activity', coords);
     }
   });
+
+// var $hotel = $('#hotel-itinerary')
+
+// $('.parent-remove').on('click', 'button', function() {
+//     console.log('got here')
+//     var $elem = $(this);
+//     $elem.remove();
+// })
+
+
+
+// $button.on('click', $hotel, function () {
+//     console.log('got here');
+//     var $elem = $(this);
+//     $elem.remove();
+// })
+
+
+
+
+
+$('.btn-danger').on('click', function() {
+  console.log('DELETE')
+})
+
+
+
+
+
+
+
 
 });
 
