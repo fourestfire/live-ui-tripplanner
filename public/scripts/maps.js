@@ -54,6 +54,20 @@ $(function initializeMap (){
       position: latLng
     });
     marker.setMap(currentMap);
+    marker.coords = coords;
+    marker.type = type;
+    markers.push(marker)
+    console.log('markers is:', markers)
+  }
+
+  var markers = [];
+
+
+
+
+  // Removes the markers from the map, but keeps them in the array.
+  function clearMarker(index) {
+    markers[index].setMap(null);
   }
 
   // drawMarker('hotel', [40.705137, -74.007624]);
@@ -62,15 +76,14 @@ $(function initializeMap (){
 
   hotels.forEach((current, idx) => {
     $('#hotel-choices').append("<option>" + current.name + "</option>")
-    $('#hotel-choices').data("location", current.place.location)
   })
 
   restaurants.forEach((current, idx) => {
-    $('#restaurant-choices').append("<option>" + current.name + "</option>").data("location", current.place.location)
+    $('#restaurant-choices').append("<option>" + current.name + "</option>")
   })
 
   activities.forEach((current, idx) => {
-    $('#activity-choices').append("<option>" + current.name + "</option>").data("location", current.place.location)
+    $('#activity-choices').append("<option>" + current.name + "</option>")
   })
 
   var itineraryHTML1 = "<div class='col-lg-10 col-md-10 col-ms-10 col-xs-10'>"
@@ -79,22 +92,29 @@ $(function initializeMap (){
   $("select").next().on('click', function() {
     var type = $(this).prev().attr('name');
     var value = $(this).prev().val();
-    var coords = $(this).prev().data("location")
-    console.log("this is coords", coords)
+
     if(type === 'hotel') {
       if ($('#hotel-itinerary').children().length === 0) {
+          var $appendObj = $(itineraryHTML1 + "<p>" + value + "</p>" + itineraryHTML2);
+          $appendObj.data =
           $('#hotel-itinerary').append(itineraryHTML1 + "<p>" + value + "</p>" + itineraryHTML2)
+          var coords = hotels.find((element) => element.name === value ).place.location;
+          console.log("this is coords", coords)
           drawMarker('hotel', coords);
       } else {
         $('#hotel-itinerary').children().remove()
         $('#hotel-itinerary').append(itineraryHTML1 + "<p>" + value + "</p>" + itineraryHTML2)
+          // markers = markers.filter((current) => )
+
         drawMarker('hotel', coords);
       }
     } else if (type === 'restaurant') {
       $('#rest-itinerary').append(itineraryHTML1 + "<p>" + value + "</p>" + itineraryHTML2)
+      var coords = restaurants.find((element) => element.name === value ).place.location;
       drawMarker('restaurant', coords);
     } else if (type === 'activity') {
       $('#act-itinerary').append(itineraryHTML1 + "<p>" + value + "</p>" + itineraryHTML2)
+      var coords = activities.find((element) => element.name === value ).place.location;
       drawMarker('activity', coords);
     }
   });
