@@ -58,17 +58,23 @@
       var restaurants = {{ restaurants | dump | safe }};
       var activities = {{ activities | dump | safe }};
 
-      hotels.forEach((current) => {
+      hotels.forEach((current, idx) => {
         $('#hotel-choices').append("<option>" + current.name + "</option>")
       })
 
-      restaurants.forEach((current) => {
+      restaurants.forEach((current, idx) => {
         $('#restaurant-choices').append("<option>" + current.name + "</option>")
       })
 
-      activities.forEach((current) => {
+      activities.forEach((current, idx) => {
         $('#activity-choices').append("<option>" + current.name + "</option>")
       })
+
+      $("select").next().on('click', function() {
+        var type = $(this).prev().attr('name');
+        var value = $(this).prev().val();
+        console.log(test)
+      });
 
     </script>
 

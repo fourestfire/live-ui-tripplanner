@@ -12,16 +12,19 @@
               <div class="panel-body">
                 <h5>Hotel</h5>
                 <select name="hotel" id="hotel-choices" class="form-control">
-                      <option selected disabled>Select Hotel</option>
-                    </select>
+                    <option selected disabled>Select Hotel</option>
+                </select>
+                <button data-action="add" class="btn btn-primary btn-circle pull-right">+</button>
                 <h5>Restaurant</h5>
                 <select name="restaurant" id="restaurant-choices" class="form-control">
-                      <option selected disabled>Select Restaurant</option>
-                    </select>
+                    <option selected disabled>Select Restaurant</option>
+                </select>
+                <button data-action="add" class="btn btn-primary btn-circle pull-right">+</button>
                 <h5>Activity</h5>
                 <select name="activity" id="activity-choices" class="form-control">
-                      <option selected disabled>Select Activity</option>
+                    <option selected disabled>Select Activity</option>
                 </select>
+                <button data-action="add" class="btn btn-primary btn-circle pull-right">+</button>
               </div>
             </div>
           </div>
@@ -39,7 +42,7 @@
 
               <div class="panel-body">
                 <h5>My Hotel</h5>
-                <div class="row">
+                <div class="row" id="hotel-itinerary">
                   <div class="col-lg-10 col-md-10 col-ms-10 col-xs-10">
                     <p>Trump Tower (don't hate me)</p>
                   </div>
@@ -48,7 +51,7 @@
                   </div>
                 </div>
                 <h5>My Restaurants</h5>
-                <div class="row">
+                <div class="row" id="rest-itinerary">
                   <div class="col-lg-10 col-md-10 col-ms-10 col-xs-10">
                     <p>Terrible Restaurant </p>
                   </div>
@@ -65,7 +68,7 @@
                   </div>
                 </div>
                 <h5>My Activities</h5>
-                <div class="row">
+                <div class="row" id="act-itinerary">
                   <div class="col-lg-10 col-md-10 col-ms-10 col-xs-10">
                     <p>Sleeping</p>
                   </div>
