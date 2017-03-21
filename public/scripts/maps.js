@@ -57,13 +57,10 @@ $(function initializeMap (){
     marker.coords = coords;
     marker.type = type;
     markers.push(marker)
-    console.log('markers is:', markers)
+    console.log('markers is:', markers, 'marker.coords is', marker.coords)
   }
 
   var markers = [];
-
-
-
 
   // Removes the markers from the map, but keeps them in the array.
   function clearMarker(index) {
@@ -94,18 +91,22 @@ $(function initializeMap (){
     var value = $(this).prev().val();
 
     if(type === 'hotel') {
+      var coords = hotels.find((element) => element.name === value ).place.location;
       if ($('#hotel-itinerary').children().length === 0) {
-          var $appendObj = $(itineraryHTML1 + "<p>" + value + "</p>" + itineraryHTML2);
-          $appendObj.data =
-          $('#hotel-itinerary').append(itineraryHTML1 + "<p>" + value + "</p>" + itineraryHTML2)
-          var coords = hotels.find((element) => element.name === value ).place.location;
+          $('#hotel-itinerary').append(itineraryHTML1 + "<p data-coords='" + coords + "'>" + value + "</p>" + itineraryHTML2)
           console.log("this is coords", coords)
           drawMarker('hotel', coords);
       } else {
+        var coordsToDelete = $('#hotel-itinerary p')[0].dataset.coords
+        var index;
+        var markerToDelete = markers.forEach((current, idx) => {
+          if (current.coords.toString() === coordsToDelete.toString()) {
+            index = idx;
+          }
+        });
+        clearMarker(index);
         $('#hotel-itinerary').children().remove()
-        $('#hotel-itinerary').append(itineraryHTML1 + "<p>" + value + "</p>" + itineraryHTML2)
-          // markers = markers.filter((current) => )
-
+        $('#hotel-itinerary').append(itineraryHTML1 + "<p data-coords='" + coords + "'>" + value + "</p>" + itineraryHTML2)
         drawMarker('hotel', coords);
       }
     } else if (type === 'restaurant') {
