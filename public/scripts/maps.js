@@ -56,11 +56,83 @@ $(function initializeMap (){
     marker.setMap(currentMap);
   }
 
-  drawMarker('hotel', [40.705137, -74.007624]);
-  drawMarker('restaurant', [40.705137, -74.013940]);
-  drawMarker('activity', [40.716291, -73.995315]);
+  // drawMarker('hotel', [40.705137, -74.007624]);
+  // drawMarker('restaurant', [40.705137, -74.013940]);
+  // drawMarker('activity', [40.716291, -73.995315]);
+
+  hotels.forEach((current, idx) => {
+    $('#hotel-choices').append("<option>" + current.name + "</option>")
+    $('#hotel-choices').data("location", current.place.location)
+  })
+
+  restaurants.forEach((current, idx) => {
+    $('#restaurant-choices').append("<option>" + current.name + "</option>").data("location", current.place.location)
+  })
+
+  activities.forEach((current, idx) => {
+    $('#activity-choices').append("<option>" + current.name + "</option>").data("location", current.place.location)
+  })
+
+  var itineraryHTML1 = "<div class='col-lg-10 col-md-10 col-ms-10 col-xs-10'>"
+  var itineraryHTML2 = "</div><div class='col-lg-2 col-md-2 col-sm-2 col-xs-2'><span class='glyphicon glyphicon-remove-circle'></span></div>"
+
+  $("select").next().on('click', function() {
+    var type = $(this).prev().attr('name');
+    var value = $(this).prev().val();
+    var coords = $(this).prev().data("location")
+    console.log("this is coords", coords)
+    if(type === 'hotel') {
+      if ($('#hotel-itinerary').children().length === 0) {
+          $('#hotel-itinerary').append(itineraryHTML1 + "<p>" + value + "</p>" + itineraryHTML2)
+          drawMarker('hotel', coords);
+      } else {
+        $('#hotel-itinerary').children().remove()
+        $('#hotel-itinerary').append(itineraryHTML1 + "<p>" + value + "</p>" + itineraryHTML2)
+        drawMarker('hotel', coords);
+      }
+    } else if (type === 'restaurant') {
+      $('#rest-itinerary').append(itineraryHTML1 + "<p>" + value + "</p>" + itineraryHTML2)
+      drawMarker('restaurant', coords);
+    } else if (type === 'activity') {
+      $('#act-itinerary').append(itineraryHTML1 + "<p>" + value + "</p>" + itineraryHTML2)
+      drawMarker('activity', coords);
+    }
+  });
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // function initialize_gmaps() {
 //     // initialize new google maps LatLng object

@@ -28,60 +28,14 @@
     {% block content %}
     {% endblock %}
 
-    <!-- <div class="container">
-
-      <hr>
-
-      <footer>
-        <div class="row">
-          <div class="col-lg-12">
-            <p>Copyright &copy; Company 2013</p>
-          </div>
-        </div>
-      </footer>
-
-    </div> -->
 
     <script src="/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfUjVXCIRLaNKI3fwaC6wreB_VfgpHLx0&sensor=true"></script>
     <script src="/scripts/maps.js"></script>
     <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-    $("#wrapper").toggleClass("toggled")
-    </script>
-    <script>
-      var hotels = {{ hotels | dump | safe }};
-      var restaurants = {{ restaurants | dump | safe }};
-      var activities = {{ activities | dump | safe }};
-
-      hotels.forEach((current, idx) => {
-        $('#hotel-choices').append("<option>" + current.name + "</option>")
-      })
-
-      restaurants.forEach((current, idx) => {
-        $('#restaurant-choices').append("<option>" + current.name + "</option>")
-      })
-
-      activities.forEach((current, idx) => {
-        $('#activity-choices').append("<option>" + current.name + "</option>")
-      })
-
-      $("select").next().on('click', function() {
-        var type = $(this).prev().attr('name');
-        var value = $(this).prev().val();
-
-        if(type === 'hotel') {
-          $('#hotel-itinerary').
-        }
-      });
-
-      // function itineraryCheck(type, value) {
-      //   if(type === hotel {})
-      // }
+      $("#menu-toggle").click(function(e) { e.preventDefault(); $("#wrapper").toggleClass("toggled"); });
+      $("#wrapper").toggleClass("toggled")
     </script>
 
   </body>
