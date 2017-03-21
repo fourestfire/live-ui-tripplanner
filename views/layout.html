@@ -42,8 +42,8 @@
 
     </div> -->
 
-    <script src="/js/bootstrap.min.js"></script>
     <script src="/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfUjVXCIRLaNKI3fwaC6wreB_VfgpHLx0&sensor=true"></script>
     <script src="/scripts/maps.js"></script>
     <script>
@@ -52,6 +52,24 @@
         $("#wrapper").toggleClass("toggled");
     });
     $("#wrapper").toggleClass("toggled")
+    </script>
+    <script>
+      var hotels = {{ hotels | dump | safe }};
+      var restaurants = {{ restaurants | dump | safe }};
+      var activities = {{ activities | dump | safe }};
+
+      hotels.forEach((current) => {
+        $('#hotel-choices').append("<option>" + current.name + "</option>")
+      })
+
+      restaurants.forEach((current) => {
+        $('#restaurant-choices').append("<option>" + current.name + "</option>")
+      })
+
+      activities.forEach((current) => {
+        $('#activity-choices').append("<option>" + current.name + "</option>")
+      })
+
     </script>
 
   </body>

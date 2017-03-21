@@ -23,9 +23,9 @@ router.get("/", function(req, res, next) {
     // console.log(outerScopeContainer)
     // res.json(outerScopeContainer)
     res.render('index', {
-      templateHotels: outerScopeContainer.dbHotels,
-      templateRestaurants: outerScopeContainer.dbRestaurants,
-      templateActivities: dbActivities
+      hotels: outerScopeContainer.dbHotels,
+      restaurants: outerScopeContainer.dbRestaurants,
+      activities: dbActivities
     });
   })
   .catch(next);
