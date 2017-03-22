@@ -56,7 +56,7 @@ $(function initializeMap (){
     marker.setMap(currentMap);
     marker.coords = coords;
     marker.type = type;
-    markers.push(marker)
+    markers.push(marker);
     // console.log('markers is:', markers, 'marker.coords is', marker.coords)
   }
 
@@ -72,19 +72,19 @@ $(function initializeMap (){
   // drawMarker('activity', [40.716291, -73.995315]);
 
   hotels.forEach((current, idx) => {
-    $('#hotel-choices').append("<option>" + current.name + "</option>")
-  })
+    $('#hotel-choices').append("<option>" + current.name + "</option>");
+  });
 
   restaurants.forEach((current, idx) => {
-    $('#restaurant-choices').append("<option>" + current.name + "</option>")
-  })
+    $('#restaurant-choices').append("<option>" + current.name + "</option>");
+  });
 
   activities.forEach((current, idx) => {
-    $('#activity-choices').append("<option>" + current.name + "</option>")
-  })
+    $('#activity-choices').append("<option>" + current.name + "</option>");
+  });
 
-  var itineraryHTML1 = "<div class='col-lg-10 col-md-10 col-ms-10 col-xs-10'>"
-  var itineraryHTML2 = "</div><div class='col-lg-2 col-md-2 col-sm-2 col-xs-2 parent-remove'><button class='btn btn-xs btn-danger remove btn-circle'>x</button></div>"
+  var itineraryHTML1 = "<div class='col-lg-10 col-md-10 col-ms-10 col-xs-10'>";
+  var itineraryHTML2 = "</div><div class='col-lg-2 col-md-2 col-sm-2 col-xs-2'><button class='btn btn-xs btn-danger remove btn-circle'>x</button></div>";
 
   $("select").next().on('click', function() {
     var type = $(this).prev().attr('name');
@@ -93,11 +93,11 @@ $(function initializeMap (){
     if(type === 'hotel') {
       var coords = hotels.find((element) => element.name === value ).place.location;
       if ($('#hotel-itinerary').children().length === 0) {
-          $('#hotel-itinerary').append(itineraryHTML1 + "<p data-coords='" + coords + "'>" + value + "</p>" + itineraryHTML2)
+          $('#hotel-itinerary').append(itineraryHTML1 + "<p data-coords='" + coords + "'>" + value + "</p>" + itineraryHTML2);
           console.log("this is coords", coords)
           drawMarker('hotel', coords);
       } else {
-        var coordsToDelete = $('#hotel-itinerary p')[0].dataset.coords
+        var coordsToDelete = $('#hotel-itinerary p')[0].dataset.coords;
         var index;
         var markerToDelete = markers.forEach((current, idx) => {
           if (current.coords.toString() === coordsToDelete.toString()) {
@@ -105,47 +105,28 @@ $(function initializeMap (){
           }
         });
         clearMarker(index);
-        $('#hotel-itinerary').children().remove()
-        $('#hotel-itinerary').append(itineraryHTML1 + "<p data-coords='" + coords + "'>" + value + "</p>" + itineraryHTML2)
+        $('#hotel-itinerary').children().remove();
+        $('#hotel-itinerary').append(itineraryHTML1 + "<p data-coords='" + coords + "'>" + value + "</p>" + itineraryHTML2);
         drawMarker('hotel', coords);
       }
     } else if (type === 'restaurant') {
-      $('#rest-itinerary').append(itineraryHTML1 + "<p>" + value + "</p>" + itineraryHTML2)
+      $('#rest-itinerary').append(itineraryHTML1 + "<p>" + value + "</p>" + itineraryHTML2);
       var coords = restaurants.find((element) => element.name === value ).place.location;
       drawMarker('restaurant', coords);
     } else if (type === 'activity') {
-      $('#act-itinerary').append(itineraryHTML1 + "<p>" + value + "</p>" + itineraryHTML2)
+      $('#act-itinerary').append(itineraryHTML1 + "<p>" + value + "</p>" + itineraryHTML2);
       var coords = activities.find((element) => element.name === value ).place.location;
       drawMarker('activity', coords);
     }
   });
 
-// var $hotel = $('#hotel-itinerary')
-
-// $('.parent-remove').on('click', 'button', function() {
-//     console.log('got here')
-//     var $elem = $(this);
-//     $elem.remove();
-// })
-
-
-
-// $button.on('click', $hotel, function () {
-//     console.log('got here');
-//     var $elem = $(this);
-//     $elem.remove();
-// })
-
-
-
-
-
-$('.btn-danger').on('click', function() {
-  console.log('DELETE')
-})
-
-
-
+  $('.parent-remove').on('click', 'button', function() {
+      console.log('got here');
+      var $elem = $(this);
+      var $prev = $elem.parent().prev().find('p')
+      console.log($prev)
+      $elem.remove();
+    });
 
 
 
