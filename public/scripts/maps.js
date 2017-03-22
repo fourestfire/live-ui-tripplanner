@@ -110,25 +110,47 @@ $(function initializeMap (){
         drawMarker('hotel', coords);
       }
     } else if (type === 'restaurant') {
-      $('#rest-itinerary').append(itineraryHTML1 + "<p>" + value + "</p>" + itineraryHTML2);
       var coords = restaurants.find((element) => element.name === value ).place.location;
+
+      $('#rest-itinerary').append(itineraryHTML1 + "<p data-coords='" + coords + "'>" + value + "</p>" + itineraryHTML2)
+
       drawMarker('restaurant', coords);
     } else if (type === 'activity') {
-      $('#act-itinerary').append(itineraryHTML1 + "<p>" + value + "</p>" + itineraryHTML2);
       var coords = activities.find((element) => element.name === value ).place.location;
+
+      $('#act-itinerary').append(itineraryHTML1 + "<p data-coords='" + coords + "'>" + value + "</p>" + itineraryHTML2);
+
       drawMarker('activity', coords);
     }
   });
 
-  $('.parent-remove').on('click', 'button', function() {
-      console.log('got here');
-      var $elem = $(this);
-      var $prev = $elem.parent().prev().find('p')
-      console.log($prev)
-      $elem.remove();
+
+
+
+    $('.parent-remove').on('click', 'button', function() {
+        var $elem = $(this);
+
+
+
+        var $current = $elem.parent()
+        var $content = $current.prev()
+        var coordsToDelete = $content.find('p')[0].dataset.coords;
+
+
+        var index;
+        markers.forEach((current, idx) => {
+          if (current.coords.toString() === coordsToDelete) {
+           index = idx;
+          }
+        });
+
+        clearMarker(index);
+
+        $current.remove();
+        $content.remove();
+
+
     });
-
-
 
 
 
