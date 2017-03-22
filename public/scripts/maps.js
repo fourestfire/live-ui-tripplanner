@@ -1,3 +1,5 @@
+/* global hotels restaurants */
+
 $(function initializeMap (){
 
   var fullstackAcademy = new google.maps.LatLng(40.705086, -74.009151);
@@ -78,8 +80,6 @@ $(function initializeMap (){
     this.hotel = {}
     this.restaurants = 1;
     this.activities = 1;
-
-
   }
 
   function AttractionCreator (name, coords, html, type) {
@@ -104,11 +104,7 @@ $(function initializeMap (){
   $('.panel-heading').on('click', '.btn-day', function(){
     $('.currentday').removeClass('currentday');
     $(this).addClass( "currentday" );
-
     currentDay = $(this).text();
-
-
-    // $( "p" ).removeClass( "myClass yourClass" )
   });
 
 
