@@ -67,9 +67,27 @@ $(function initializeMap (){
     markers[index].setMap(null);
   }
 
+  var currentDay = 1;
+  var daysArray = [];
+  var firstDay = new DayObj();
+  daysArray.push(firstDay)
 
-  var daysArray = [{}];
+  function DayObj () {
+    var obj = {};
+    this.day = daysArray.length+1;
+    this.hotel = {}
+    this.restaurants = 1;
+    this.activities = 1;
 
+
+  }
+
+  function AttractionCreator (name, coords, html, type) {
+    this.name = name;
+    this.coords = coords;
+    this.html = html;
+    this.type = type;
+  }
 
   var buttonArr = [1];
 
@@ -77,14 +95,22 @@ $(function initializeMap (){
     var buttonHTML = "<button type='button' class='btn btn-primary btn-day btn-circle'>" + (buttonArr.length + 1) + "</button>";
     buttonArr.push(buttonArr.length + 1);
     $(this).prev().after(buttonHTML);
+    var newDay = new DayObj;
+    console.log('the new day:', newDay)
+    daysArray.push(newDay);
+
   });
 
   $('.panel-heading').on('click', '.btn-day', function(){
+    $('.currentday').removeClass('currentday');
+    $(this).addClass( "currentday" );
 
-    $(this).addClass( "currentday" )
-      console.log("got in here...this", $(this))
+    currentDay = $(this).text();
+
+
     // $( "p" ).removeClass( "myClass yourClass" )
   });
+
 
 
 
@@ -107,12 +133,21 @@ $(function initializeMap (){
     var type = $(this).prev().attr('name');
     var value = $(this).prev().val();
 
+
     if(type === 'hotel') {
       var coords = hotels.find((element) => element.name === value ).place.location;
       if ($('#hotel-itinerary').children().length === 0) {
-          $('#hotel-itinerary').append(itineraryHTML1 + "<p data-coords='" + coords + "'>" + value + "</p>" + itineraryHTML2);
+          var html = itineraryHTML1 + "<p data-coords='" + coords + "'>" + value + "</p>" + itineraryHTML2
+          $('#hotel-itinerary').append(html);
           drawMarker('hotel', coords);
+
+          var newHotel = new AttractionCreator(value, coords, html, 'hotel')
+          daysArray[currentDay-1].hotel = newHotel;
+          console.log('the new hotel:', newHotel);
+          console.log('added at day', currentDay-1)
+          console.log(daysArray);
       } else {
+        var html = itineraryHTML1 + "<p data-coords='" + coords + "'>" + value + "</p>" + itineraryHTML2;
         var coordsToDelete = $('#hotel-itinerary p')[0].dataset.coords;
         var index;
         var markerToDelete = markers.forEach((current, idx) => {
@@ -122,8 +157,14 @@ $(function initializeMap (){
         });
         clearMarker(index);
         $('#hotel-itinerary').children().remove();
-        $('#hotel-itinerary').append(itineraryHTML1 + "<p data-coords='" + coords + "'>" + value + "</p>" + itineraryHTML2);
+        $('#hotel-itinerary').append(html);
         drawMarker('hotel', coords);
+
+        var newHotel = new AttractionCreator(value, coords, html, 'hotel')
+        console.log('the new hotel:', newHotel);
+        console.log('added at day', currentDay-1)
+        daysArray[currentDay-1].hotel = newHotel;
+        console.log(daysArray);
       }
     } else if (type === 'restaurant') {
       var coords = restaurants.find((element) => element.name === value ).place.location;
