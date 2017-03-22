@@ -67,9 +67,26 @@ $(function initializeMap (){
     markers[index].setMap(null);
   }
 
-  // drawMarker('hotel', [40.705137, -74.007624]);
-  // drawMarker('restaurant', [40.705137, -74.013940]);
-  // drawMarker('activity', [40.716291, -73.995315]);
+
+  var daysArray = [{}];
+
+
+  var buttonArr = [1];
+
+  $('#add-btn').on('click', function(){
+    var buttonHTML = "<button type='button' class='btn btn-primary btn-day btn-circle'>" + (buttonArr.length + 1) + "</button>";
+    buttonArr.push(buttonArr.length + 1);
+    $(this).prev().after(buttonHTML);
+  });
+
+  $('.panel-heading').on('click', '.btn-day', function(){
+
+    $(this).addClass( "currentday" )
+      console.log("got in here...this", $(this))
+    // $( "p" ).removeClass( "myClass yourClass" )
+  });
+
+
 
   hotels.forEach((current, idx) => {
     $('#hotel-choices').append("<option>" + current.name + "</option>");
@@ -94,7 +111,6 @@ $(function initializeMap (){
       var coords = hotels.find((element) => element.name === value ).place.location;
       if ($('#hotel-itinerary').children().length === 0) {
           $('#hotel-itinerary').append(itineraryHTML1 + "<p data-coords='" + coords + "'>" + value + "</p>" + itineraryHTML2);
-          console.log("this is coords", coords)
           drawMarker('hotel', coords);
       } else {
         var coordsToDelete = $('#hotel-itinerary p')[0].dataset.coords;
@@ -112,7 +128,7 @@ $(function initializeMap (){
     } else if (type === 'restaurant') {
       var coords = restaurants.find((element) => element.name === value ).place.location;
 
-      $('#rest-itinerary').append(itineraryHTML1 + "<p data-coords='" + coords + "'>" + value + "</p>" + itineraryHTML2)
+      $('#rest-itinerary').append(itineraryHTML1 + "<p data-coords='" + coords + "'>" + value + "</p>" + itineraryHTML2);
 
       drawMarker('restaurant', coords);
     } else if (type === 'activity') {
@@ -124,18 +140,12 @@ $(function initializeMap (){
     }
   });
 
-
-
-
     $('.parent-remove').on('click', 'button', function() {
         var $elem = $(this);
 
-
-
-        var $current = $elem.parent()
-        var $content = $current.prev()
+        var $current = $elem.parent();
+        var $content = $current.prev();
         var coordsToDelete = $content.find('p')[0].dataset.coords;
-
 
         var index;
         markers.forEach((current, idx) => {
@@ -148,8 +158,6 @@ $(function initializeMap (){
 
         $current.remove();
         $content.remove();
-
-
     });
 
 

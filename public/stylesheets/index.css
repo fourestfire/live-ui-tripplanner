@@ -96,6 +96,12 @@ html {
   width: 100%;
   margin-top: 1px; }
 
+.btn-primary {
+  background-color: #0E4F64; }
+
+.currentday {
+  background-color: #7FFFD4; }
+
 .panel-body h5:first-child {
   margin-top: 0px; }
 
@@ -147,9 +153,6 @@ select {
 
 .btn-success {
   border-color: #0E4F64; }
-
-.btn-primary {
-  background-color: #0E4F64; }
 
 .btn-info {
   border-color: #0E4F64; }
